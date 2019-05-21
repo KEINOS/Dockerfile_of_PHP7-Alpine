@@ -28,4 +28,5 @@ COPY --from=src /etc/apk/repositories /etc/apk/repositories
 RUN apk --update add ca-certificates \
     && apk add --update \
       php@php \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && sed -i -e 's/;date.timezone =/date.timezone = "Asia\/Tokyo"/' /etc/php7/php.ini
